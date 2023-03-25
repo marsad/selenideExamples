@@ -22,8 +22,8 @@ public class uploadFileStepDefinitions {
         sleep(500);
     }
 
-    @When("user selects the file from its pc")
-    public void user_selects_the_file_from_its_pc() {
+    @When("user selects image file from its pc")
+    public void user_selects_image_file_from_its_pc() {
         $("#fileinput").uploadFile(new File("src/test/data/SampleJPGImg.jpg"));
     }
 
@@ -37,9 +37,23 @@ public class uploadFileStepDefinitions {
         $(By.name("upload")).click();
     }
 
-    @Then("the success message should appear on the page")
-    public void the_success_message_should_appear_on_the_page() {
+    @Then("the message about successful image upload should appear")
+    public void the_message_about_successful_image_upload_should_appear() {
         $("h2").shouldHave(text("You uploaded this image:"));
+    }
+
+    @When("user selects document file from its pc")
+    public void user_selects_document_file_from_its_pc() {
+        $("#fileinput").uploadFile(new File("src/test/data/SamplePDFDoc.pdf"));
+    }
+
+    @When("selects radio button A General File")
+    public void selects_radio_button_a_general_file() {
+        $("#itsafile").selectRadio("text");
+    }
+    @Then("the message about successful document upload should appear")
+    public void the_message_about_successful_document_upload_should_appear() {
+        $("h2").shouldHave(text("You uploaded this file:"));
     }
 
 }
