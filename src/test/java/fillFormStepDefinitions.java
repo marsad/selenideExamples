@@ -64,11 +64,11 @@ public class fillFormStepDefinitions {
 
     @When("user selects the item5 from the dropdown")
     public void user_selects_the_item5_from_the_dropdown() {
-        $(By.("dropdown")).selectOptionByValue("dd5");
+        $(By.name("dropdown")).selectOptionByValue("dd5");
     }
     @When("user submits the form")
     public void user_submits_the_form() {
-        $(By.name("submitbutton")).sele("submit").click();
+        $(By.name("submitbutton")).selectOptionByValue("submit");
     }
 
     @Then("the successful message about submission should appear")
