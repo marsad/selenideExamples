@@ -23,9 +23,9 @@ public class triangleAppStepDefinitions {
         // Write code here that turns the phrase above into concrete actions
         $("#identify-triangle-action").click();
     }
-    @Then("the error message Side {int} is missing should be displayed")
-    public void the_error_message_side_is_missing_should_be_displayed(Integer int1) {
-        $("#triangle-type").shouldHave(text("Error: Side is missing"));
+    @Then("the error message about missing side should be displayed")
+    public void the_error_message_about_missing_side_should_be_displayed() {
+        $("#triangle-type").shouldHave(text("Error: Side 3 is missing"));
     }
     @When("user fills the length of all three sides where sum of the length of any two sides is smaller than the length of the third side \\(negative)")
     public void user_fills_the_length_of_all_three_sides_where_sum_of_the_length_of_any_two_sides_is_smaller_than_the_length_of_the_third_side_negative() {

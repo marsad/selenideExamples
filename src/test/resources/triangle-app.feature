@@ -6,7 +6,7 @@ Feature: Triangle App
     Given an open browser with page Triangle
     When user fills the length of only two sides
     When user submits the data
-    Then the error message Side "3" is missing should be displayed
+    Then the error message about missing side should be displayed
 
   Scenario: validate if the figure is a triangle
 
