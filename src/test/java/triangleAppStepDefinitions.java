@@ -1,18 +1,11 @@
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-
-import org.openqa.selenium.By;
-
-import com.codeborne.selenide.Configuration;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebElement;
 
-import java.io.File;
+
 public class triangleAppStepDefinitions {
 
     @Given("an open browser with page Triangle")
@@ -74,5 +67,4 @@ public class triangleAppStepDefinitions {
     public void the_message_scalene_should_be_displayed() {
         $("#triangle-type").shouldHave(text("Scalene"));
     }
-
 }
