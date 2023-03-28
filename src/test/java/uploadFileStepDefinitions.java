@@ -46,6 +46,7 @@ public class uploadFileStepDefinitions {
     public void selects_radio_button_a_general_file() {
         $("#itsafile").selectRadio("text");
     }
+
     @Then("the message about successful document upload should appear")
     public void the_message_about_successful_document_upload_should_appear() {
         $("h2").shouldHave(text("You uploaded this file:"));

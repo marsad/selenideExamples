@@ -1,6 +1,6 @@
-Feature: Upload file
+Feature: Fill the form
 
-  Scenario: user can upload image file
+  Scenario: user can fill and submit the form
 
     Given an open browser with page Form Example
     When user fills the username
@@ -13,3 +13,12 @@ Feature: Upload file
     When user selects the item5 from the dropdown
     When user submits the form
     Then the successful message about submission should appear
+
+  Scenario: user can fill and reset the form
+
+    Given an open browser with page Form Example
+    When user fills the username
+    When user fills the password
+    When user fills the comment
+    When user resets the form
+    Then the fields should be empty
