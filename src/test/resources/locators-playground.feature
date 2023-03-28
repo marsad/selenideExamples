@@ -13,3 +13,10 @@ Feature: Locators Playground
     When a title is visible on the page
     Then the found paragraph should contain F letter
 
+  Scenario: user can find paragraph by xpath
+
+    Given an open browser with page Find By Playground - Locator Examples
+    When a title is visible on the page
+    Then the last nested paragraph text should be found
+
+

@@ -1,16 +1,9 @@
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
-import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.sleep;
 
 import org.openqa.selenium.By;
-
-import com.codeborne.selenide.Configuration;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -35,6 +28,11 @@ public class locatorsPlaygroundStepDefinitions {
     @Then("the found paragraph should contain F letter")
     public void the_found_paragraph_should_contain_F_letter() {
         $(By.name("pName6")).shouldHave(text("This is f paragraph text"));
+    }
+
+    @Then("the last nested paragraph text should be found")
+    public void the_last_nested_paragraph_text_should_be_found() {
+        $(By.xpath("//*[@id=\"p41\"]")).shouldHave(text("nested para text"));
     }
 
 }
