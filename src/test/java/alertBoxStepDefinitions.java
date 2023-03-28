@@ -1,16 +1,13 @@
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-import org.openqa.selenium.By;
-
-import com.codeborne.selenide.Configuration;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebElement;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebElement;
+
 
 public class alertBoxStepDefinitions {
 
@@ -23,6 +20,7 @@ public class alertBoxStepDefinitions {
     public void user_clicks_on_the_button_show_alert_box() {
         WebElement alertBox = $("#alertexamples").shouldHave(value("Show alert box"));
         alertBox.click();
+        sleep(5000);
     }
     @Then("user can confirms the alert")
     public void the_alert_should_be_displayed() {
@@ -38,20 +36,18 @@ public class alertBoxStepDefinitions {
     public void user_clicks_on_the_ok_button() {
         confirm("I am a confirm alert");
     }
-    @Then("success message should be displayed")
-    public void success_message_should_be_displayed() {
+    @Then("the message: confirm returned true should be displayed")
+    public void the_message_confirm_returned_true_should_be_displayed() {
         $("#confirmreturn").shouldHave(text("true"));
     }
-
-    @When("user clicks on the Cancel button")
-    public void user_clicks_on_the_cancel_button() {
+    @When("user clicks on the Cancel button within alert")
+    public void user_clicks_on_the_cancel_button_within_alert() {
         dismiss("I am a confirm alert");
     }
-    @Then("failure message should be displayed")
-    public void failure_message_should_be_displayed() {
+    @Then("the message: confirm returned false should be displayed")
+    public void the_message_confirm_returned_false_should_be_displayed() {
         $("#confirmreturn").shouldHave(text("false"));
     }
-
     @When("user clicks on the button Show prompt box")
     public void user_clicks_on_the_button_show_prompt_box() {
         WebElement promptBox = $("#promptexample").shouldHave(value("Show prompt box"));
@@ -65,5 +61,23 @@ public class alertBoxStepDefinitions {
     public void the_message_with_unchanged_text_should_be_displayed() {
         $("#promptreturn").shouldHave(text("change me"));
     }
-
+    @When("user fills new text into the field")
+    public void user_fills_new_text_into_the_field() {
+        WebElement promptBox = $("#promptexample").shouldHave(value("Show prompt box"));
+        Alert alert = switchTo().alert();
+        String text = alert.getText();
+        alert.sendKeys("This is my text!");
+    }
+    @Then("the message with filled text should be displayed")
+    public void the_message_with_filled_text_should_be_displayed() {
+        $("#promptreturn").shouldHave(text("This is my text!"));
+    }
+    @When("user clicks on the Cancel button within prompt")
+    public void user_clicks_on_the_cancel_button_within_prompt() {
+        dismiss("I prompt you");
+    }
+    @Then("the message without any text should be displayed")
+    public void the_message_without_any_text_should_be_displayed() {
+        $("#promptexplanation").shouldHave(text("You clicked Cancel. 'prompt' returned"));
+    }
 }
